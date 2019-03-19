@@ -1,4 +1,4 @@
-//%color=#04B404 icon="\uf0c3" block="pH_sensor"
+//%color=#04B404 icon="\uf0c3" block="pH-sensor"
 namespace ph_sensor {
     /**
      * Get raw data. For calibrating the sensor.
@@ -10,6 +10,10 @@ namespace ph_sensor {
     export function raw_data(pinarg: AnalogPin): number {
         return pins.analogReadPin(pinarg)
     }
+
+    let readingPin: AnalogPin = AnalogPin.P1
+    let row_data: number[] = [604, 516]
+    let ref_pH: number[] = [6.86, 4.01]
 
     function value_sum(value: number[]): number {
         let returnValue = 0
@@ -71,10 +75,21 @@ namespace ph_sensor {
      * This function will return the pH value by least square method.
      */
     //%blockId=pH_value
-    //%block="ph value raw data %data|ph %ph|pin %pin_arg"
+    //%block="Calibration | raw data %data|pH %ph|pin %pin_arg"
+    //%blockExternalInputs=true
     //%pin_arg.fieldEditor="gridpicker" pin_arg.fieldOptions.columns=3
     //%data.defl=[604,516] ph.defl=[6.86,4.01] pin_arg.defl=AnalogPin.P1
-    export function ph_value(data: number[], ph: number[], pin_arg: AnalogPin): number {
-        return ab_vector(data, ph)[0] + ab_vector(data, ph)[1] * pins.analogReadPin(pin_arg)
+    export function calibrate(data: number[], ph: number[], pin_arg: AnalogPin) {
+        readingPin = pin_arg
+        row_data = data
+        ref_pH = ph
+    }
+
+    /**
+     * Return the pH value. 
+     */
+    //%block="pH value"
+    export function ph_value(): number {
+        return ab_vector(row_data, ref_pH)[0] + ab_vector(row_data, ref_pH)[1] * pins.analogReadPin(readingPin)
     }
 }
