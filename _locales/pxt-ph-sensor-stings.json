@@ -1,6 +1,6 @@
 {
   "ph_sensor.calibrate|block": "Calibration | raw data %data|pH %ph|pin %pin_arg",
-  "ph_sensor.raw_data": "Read raw data pin %pinarg"
-  "ph_sensor.ph_value": "pH value",
+  "ph_sensor.raw_data|block": "Read raw data pin %pinarg"
+  "ph_sensor.ph_value|block": "pH value",
   "{id:category}ph_sensor": "pH-sensor"
 }
