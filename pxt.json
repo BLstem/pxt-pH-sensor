@@ -8,7 +8,8 @@
     },
     "files": [
         "README.md",
-        "main.ts"
+        "main.ts",
+        "_locales/zh-tw/pxt-ph-sensor-stirngs.json"
     ],
     "testFiles": [
         "test.ts"
