@@ -9,7 +9,7 @@
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh-tw/pxt-ph-sensor-stirngs.json"
+        "_locales/zh-tw/pxt-ph-sensor-strings.json"
     ],
     "testFiles": [
         "test.ts"
