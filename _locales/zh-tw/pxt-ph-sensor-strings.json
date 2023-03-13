@@ -1,0 +1,6 @@
+{
+  "ph_sensor.calibrate|block": "校正 | 原始數據 %data|pH %ph|引腳 %pin_arg",
+  "ph_sensor.raw_data|block": "讀取原始數據 引腳 %pinarg",
+  "ph_sensor.ph_value|block": "pH值",
+  "{id:category}ph_sensor": "pH-sensor"
+}
